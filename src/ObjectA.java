@@ -1,9 +1,9 @@
 public class ObjectA {
 
     private int x;
-    private boolean y;
+    private int y;
 
-    public ObjectA(int x, boolean y){
+    public ObjectA(int x, int y){
         this.x = x;
         this.y = y;
     }
@@ -12,7 +12,7 @@ public class ObjectA {
         return x;
     }
 
-    public boolean get_y() {
+    public int get_y() {
         return y;
     }
 }

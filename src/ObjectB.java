@@ -1,14 +1,16 @@
 public class ObjectB {
 
-    private ObjectB b1;
+    private ObjectA a1;
 
     public ObjectB() {}
 
-    public ObjectB(ObjectB b1) {
-        this.b1 = b1;
+    // setter
+    public ObjectB(ObjectA a1) {
+        this.a1 = a1;
     }
 
-    public ObjectB getB1() {
-        return b1;
+    // getter
+    public ObjectA getA() {
+        return a1;
     }
 }

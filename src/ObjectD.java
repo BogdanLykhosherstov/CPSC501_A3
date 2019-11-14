@@ -1,18 +1,14 @@
-import java.util.ArrayList;
-
 public class ObjectD {
 
-    ArrayList<ObjectA> list;
+    private ObjectA[] list;
 
-    public ObjectD(){
-        this.list = new ArrayList<ObjectA>();
+    // setter
+    public ObjectD(ObjectA[]list){
+        this.list = list;
     }
 
-    public void createElement(ObjectA a1){
-        list.add(a1);
-    }
-
-    public ArrayList<ObjectA> getList() {
+    // getter
+    public ObjectA[] getList() {
         return list;
     }
 }
