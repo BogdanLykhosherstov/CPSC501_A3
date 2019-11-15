@@ -1,9 +1,6 @@
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
 
-import java.io.FileWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,26 +16,29 @@ public class Receiver {
         InetAddress inetAddress = InetAddress.getLocalHost();
         System.out.println("Server opened at: " + inetAddress.getHostAddress());
 
-        System.out.print("Please enter desired port number: ");
+        System.out.print("Enter Port: ");
         int portNumber;
         portNumber = scanner.nextInt();
 
+
         ServerSocket serverSocket = new ServerSocket(portNumber, 0, inetAddress);
+        System.out.println("Socket created and listening on port: "+portNumber);
 
         while (true) {
 
             Socket socket = serverSocket.accept();
-            System.out.println("Received file");
+
 
             SAXBuilder builder = new SAXBuilder();
             Document document = builder.build(socket.getInputStream());
+            System.out.println("Received file");
 
-
-            try {
-                new XMLOutputter(Format.getPrettyFormat()).output(document, new FileWriter("test_received.xml"));
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            Visualizer visualizer = new Visualizer();
+            Deserializer deserializer = new Deserializer();
+            //deserialize and output object to the screen
+            Object object = deserializer.deserialize(document);
+            System.out.println("Inspecting file");
+            visualizer.inspect(object, true);
 
         }
     }

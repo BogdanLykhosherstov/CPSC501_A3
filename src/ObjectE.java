@@ -4,6 +4,7 @@ public class ObjectE {
 
     ArrayList<ObjectA> list;
 
+
     public ObjectE(){
         this.list = new ArrayList<ObjectA>();
     }

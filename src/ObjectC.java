@@ -2,6 +2,7 @@ public class ObjectC {
 
     private int [] list;
 
+    public ObjectC() {}
     //setter
     public ObjectC(int [] list){
         this.list = list;

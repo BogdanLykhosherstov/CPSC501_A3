@@ -37,7 +37,9 @@ public class ObjectCreator {
                 break;
             case ("6"):
                 //object will equal null if nothing is selected
-                break;
+                System.out.println("Exiting");
+                return null;
+
 
         }
         System.out.println(" Object Created\n");

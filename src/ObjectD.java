@@ -2,6 +2,7 @@ public class ObjectD {
 
     private ObjectA[] list;
 
+    public ObjectD(){}
     // setter
     public ObjectD(ObjectA[]list){
         this.list = list;
