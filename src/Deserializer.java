@@ -15,23 +15,8 @@ public class Deserializer {
     public Object deserialize(Document document) throws Exception {
         Element root = document.getRootElement();
         List<Element> elements = root.getChildren();
-        for (Element node : elements) {
-            Object objFromDocument;
 
-            String className = node.getAttribute("class").getValue();
-            Class c = Class.forName(className);
-
-            if (c.isArray()) {
-                int length = Integer.parseInt(node.getAttribute("length").getValue());
-                objFromDocument = Array.newInstance(c.getComponentType(), length);
-            } else {
-                Constructor constructor = c.getDeclaredConstructor(null);
-                objFromDocument = constructor.newInstance(null);
-            }
-
-            identityMap.put(node.getAttribute("id").getValue(), objFromDocument);
-        }
-
+        createObjects(elements);
         setFieldValues(elements);
         return identityMap.get("0");
     }
@@ -55,6 +40,24 @@ public class Deserializer {
         }
     }
 
+    private void createObjects(List<Element> elements) throws Exception{
+        for (Element node : elements) {
+            Object objFromDocument;
+
+            String className = node.getAttribute("class").getValue();
+            Class c = Class.forName(className);
+
+            if (c.isArray()) {
+                int length = Integer.parseInt(node.getAttribute("length").getValue());
+                objFromDocument = Array.newInstance(c.getComponentType(), length);
+            } else {
+                Constructor constructor = c.getDeclaredConstructor(null);
+                objFromDocument = constructor.newInstance(null);
+            }
+
+            identityMap.put(node.getAttribute("id").getValue(), objFromDocument);
+        }
+    }
 
     private void setFieldValues(List<Element> list) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
 
