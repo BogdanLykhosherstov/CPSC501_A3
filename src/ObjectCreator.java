@@ -13,10 +13,11 @@ public class ObjectCreator {
         System.out.println("3. An object that contains an array of primitives.");
         System.out.println("4. An object that contains an array of object references.");
         System.out.println("5. An object that uses an instance of one of Java’s collection classes to refer to several other objects. ");
+        System.out.println("6. Exit. ");
 
         String option = input.nextLine();
 
-        Object object =null;
+        Object object = null;
 
         switch (option) {
             case ("1"):
@@ -34,6 +35,10 @@ public class ObjectCreator {
             case ("5"):
                 object = createObjectE();
                 break;
+            case ("6"):
+                //object will equal null if nothing is selected
+                break;
+
         }
         System.out.println(" Object Created\n");
         return object;
